@@ -22,7 +22,7 @@ This is an example dag for using the KubernetesPodOperator.
 from kubernetes.client import models as k8s
 
 from airflow import DAG
-from airflow.kubernetes.secret import Secret
+#from airflow.kubernetes.secret import Secret
 from airflow.operators.bash import BashOperator
 from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import KubernetesPodOperator
 from airflow.utils.dates import days_ago
