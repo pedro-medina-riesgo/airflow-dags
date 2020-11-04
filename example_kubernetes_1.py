@@ -98,11 +98,11 @@ tolerations = [{'key': "key", 'operator': 'Equal', 'value': 'value'}]
 
 
 default_args = {
-    'owner': 'airflow',
+    'owner': 'Peter',
 }
 
 with DAG(
-    dag_id='example_kubernetes_operator',
+    dag_id='example_kubernetes_1',
     default_args=default_args,
     schedule_interval=None,
     start_date=days_ago(2),
