@@ -1,7 +1,8 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from airflow import DAG
 from airflow import configuration as conf
+from airflow.operators.bash_operator import BashOperator
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOperator
 
@@ -24,6 +25,14 @@ start = DummyOperator(
     dag=dag
 )
 
+bash = BashOperator(
+    name='bash',
+    task_id='bash-id',
+    bash_command='echo "{{ params.my_param }}',
+    params={'my_param': namespace},
+    dag=dag
+)
+
 kpo = KubernetesPodOperator(
     namespace=namespace,
     image="python:3.6",
@@ -43,4 +52,4 @@ end = DummyOperator(
     dag=dag
 )
 
-start >> kpo >> end
+start >> bash >> kpo >> end
