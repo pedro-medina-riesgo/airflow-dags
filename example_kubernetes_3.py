@@ -12,7 +12,8 @@ default_args = {
     'start_date': datetime.utcnow(),
 }
 
-namespace = conf.get('kubernetes', 'NAMESPACE')
+# namespace = conf.get('kubernetes', 'NAMESPACE')
+namespace = 'pso-dev-e92439b19961-afl1'
 
 dag = DAG(
     dag_id='example_kubernetes_3',
