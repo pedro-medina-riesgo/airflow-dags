@@ -28,7 +28,7 @@ start = DummyOperator(
 bash = BashOperator(
     name='bash',
     task_id='bash-id',
-    bash_command='echo "{{ params.my_param }}',
+    bash_command='echo "{{ params.my_param }}"',
     params={'my_param': namespace},
     dag=dag
 )
