@@ -57,4 +57,6 @@ write_xcom = KubernetesPodOperator(
 pod_task_xcom_result = BashOperator(
     bash_command="echo \"{{ task_instance.xcom_pull('write_xcom-task')[0] }}\"",
     name="pod_task_xcom_result-name",
+    task_id="pod_task_xcom_result-task",
+    dag=dag,
 )
