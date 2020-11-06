@@ -26,7 +26,6 @@ k = KubernetesPodOperator(
     arguments=["echo", "10"],
     name="k-name",
     task_id="k-task",
-    do_xcom_push=True,
     is_delete_operator_pod=True,
     in_cluster=True,
     get_logs=True,
@@ -55,9 +54,9 @@ k = KubernetesPodOperator(
 #    dag=dag
 #)
 
-pod_task_xcom_result = BashOperator(
-    bash_command="echo \"{{ task_instance.xcom_pull('k-task')[0] }}\"",
-    name="pod_task_xcom_result-name",
-    task_id="pod_task_xcom_result-task",
-    dag=dag,
-)
+#pod_task_xcom_result = BashOperator(
+#    bash_command="echo \"{{ task_instance.xcom_pull('k-task')[0] }}\"",
+#    name="pod_task_xcom_result-name",
+#    task_id="pod_task_xcom_result-task",
+#    dag=dag,
+#)
