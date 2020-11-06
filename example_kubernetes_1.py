@@ -41,20 +41,6 @@ k = KubernetesPodOperator(
     ##affinity=Affinity.memory_heavy,
     ##startup_timeout_seconds=60,
 
-quay_k8s = KubernetesPodOperator(
-    namespace=namespace,
-    image='quay.io/apache/bash',
-    image_pull_secrets=[k8s.V1LocalObjectReference('testquay')],
-    cmds=["bash", "-cx"],
-    arguments=["echo", "10", "echo pwd"],
-    name="quay_k8s-name",
-    task_id="quay_k8s-task",
-    is_delete_operator_pod=True,
-    in_cluster=True,
-    get_logs=True,
-    dag=dag
-)
-
 write_xcom = KubernetesPodOperator(
     namespace=namespace,
     image='alpine',
@@ -71,5 +57,4 @@ write_xcom = KubernetesPodOperator(
 pod_task_xcom_result = BashOperator(
     bash_command="echo \"{{ task_instance.xcom_pull('write_xcom-task')[0] }}\"",
     name="pod_task_xcom_result-name",
-    task_id="pod_task_xcom_result-task",
 )
