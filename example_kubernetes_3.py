@@ -17,7 +17,7 @@ namespace = 'pso-dev-e92439b19961-afl1'
 
 dag = DAG(
     dag_id='example_kubernetes_3',
-    default_args=default_args
+    default_args=default_args,
 )
 
 start = DummyOperator(

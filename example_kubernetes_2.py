@@ -4,7 +4,8 @@ from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOpera
 from airflow.operators.dummy_operator import DummyOperator
 from airflow import configuration as conf
 
-namespace = conf.get('kubernetes', 'NAMESPACE')
+# namespace = conf.get('kubernetes', 'NAMESPACE')
+namespace = 'pso-dev-e92439b19961-afl1'
 
 default_args = {
     'owner': 'Peter',
