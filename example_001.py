@@ -22,10 +22,7 @@ def jupyter_wrapper_function():
                        'B': [0, 4, 3, 6, 7, 10, 11, 9, 13],
                        'C': [1, 2, 3, 1, 2, 3, 1, 2, 3]})
 
-    def pinta_pinta(df):
-        print(df)
-
-    pinta_pinta(df)
+    print(df)
 
     # In[ ]:
 
