@@ -4,7 +4,7 @@ from airflow.operators.python_operator import PythonOperator
 
 
 # Wrapper
-def jupyter_wrapper_function(ds, **kwargs):
+def jupyter_wrapper_function():
     # !/usr/bin/env python
     # coding: utf-8
 
@@ -25,8 +25,6 @@ def jupyter_wrapper_function(ds, **kwargs):
 
     # In[ ]:
 
-    print(kwargs)
-    print(ds)
     return 'Whatever you return gets printed in the logs'
 
 
@@ -46,7 +44,6 @@ dag = DAG(
 
 step1 = PythonOperator(
     task_id='step1',
-    provide_context=True,
     python_callable=jupyter_wrapper_function,
     dag=dag,
 )
