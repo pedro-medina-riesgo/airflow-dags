@@ -66,7 +66,7 @@ args = {
 }
 
 dag = DAG(
-    dag_id='example_001',
+    dag_id='example_002',
     default_args=args,
     schedule_interval=None,
     tags=['example']
