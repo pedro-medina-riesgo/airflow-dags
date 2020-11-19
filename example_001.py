@@ -43,8 +43,15 @@ dag = DAG(
     tags=['example']
 )
 
+run_this_1 = DummyOperator(task_id='run_this_1', dag=dag)
+run_this_2 = DummyOperator(task_id='run_this_2', dag=dag)
+run_this_2.set_upstream(run_this_1)
+run_this_3 = DummyOperator(task_id='run_this_3', dag=dag)
+run_this_3.set_upstream(run_this_2)
+
 step1 = PythonOperator(
     task_id='step1',
     python_callable=jupyter_wrapper_function,
     dag=dag,
 )
+ step1.set_upstream(run_this_3)
