@@ -40,6 +40,6 @@ dag = DAG(
 
 task = PythonOperator(
     task_id='task',
-    python_callable=jupyter_wrapper_function,
+    python_callable=nootbook_wrapper_function,
     dag=dag,
 )
