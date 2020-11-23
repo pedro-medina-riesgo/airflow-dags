@@ -29,7 +29,7 @@ def notebook_wrapper_function():
 args = {
     'owner': 'Airflow',
     'depends_on_past': False,
-    'start_date': days_ago(2),
+    'start_date': days_ago(1),
 }
 
 dag = DAG(
