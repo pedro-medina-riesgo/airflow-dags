@@ -35,7 +35,6 @@ args = {
 dag = DAG(
     dag_id='example_001',
     default_args=args,
-    schedule_interval=None,
 )
 
 task = PythonOperator(
