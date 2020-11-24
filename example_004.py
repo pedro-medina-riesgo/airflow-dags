@@ -9,6 +9,7 @@ import pandas as pd
 def my_new_print_function(df):
     print(df)
     df.describe()
+    return 'print from a dependency'
 
 # Wrapper functions
 def my_function_1():
@@ -16,11 +17,11 @@ def my_function_1():
                        'A': [4, 3, 5, 2, 1, 7, 7, 5, 9],
                        'B': [0, 4, 3, 6, 7, 10, 11, 9, 13],
                        'C': [1, 2, 3, 1, 2, 3, 1, 2, 3]})
-    my_new_print_function(df1)
+    print(my_new_print_function(df1))
 
 def my_function_2():
     df2 = pd.DataFrame(np.random.randint(0,100,size=(100, 4)), columns=list('ABCD'))
-    my_new_print_function(df2)
+    print(my_new_print_function(df2))
 
 # Arguments
 args = {
