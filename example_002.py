@@ -94,7 +94,7 @@ notebook_2 = PythonOperator(
 )
 
 notebook_3 = PythonOperator(
-    task_id='notebook_3task',
+    task_id='notebook_3_task',
     python_callable=notebook_3_wrapper_function,
     dag=dag,
 )
