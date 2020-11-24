@@ -6,8 +6,8 @@ from airflow.utils.dates import days_ago
 from airflow.operators.python_operator import PythonOperator
 
 
-def probando_probando():
-    print('estamos dentro de probando')
+def probando_probando(x):
+    print('estamos dentro de probando ' + x)
 
 # Wrapper functions
 def my_task_1_wrapper_function():
@@ -17,13 +17,13 @@ def my_task_1_wrapper_function():
                        'C': [1, 2, 3, 1, 2, 3, 1, 2, 3]})
     print(df1)
     df1.describe()
-    probando_probando()
+    probando_probando('task1')
 
 def my_task_2_wrapper_function():
     df2 = pd.DataFrame(np.random.randint(0,100,size=(100, 4)), columns=list('ABCD'))
     print(df2)
     df2.describe()
-    probando_probando()
+    probando_probando('task2')
 
 # Arguments
 args = {
