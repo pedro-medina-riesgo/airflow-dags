@@ -76,7 +76,7 @@ args = {
 
 # Dag
 dag = DAG(
-    dag_id='example_2',
+    dag_id='example_002',
     default_args=args,
 )
 

@@ -34,7 +34,7 @@ args = {
 
 # Dag
 dag = DAG(
-    dag_id='example_1',
+    dag_id='example_001',
     default_args=args,
 )
 
