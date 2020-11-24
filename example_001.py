@@ -11,7 +11,6 @@ def first_notebook_wrapper_function():
     # In[1]:
     import numpy as np
     import pandas as pd
-    from time import sleep
 
     # # Make a pandas DataFrame
 
