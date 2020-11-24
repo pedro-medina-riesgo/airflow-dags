@@ -3,8 +3,8 @@ from airflow.utils.dates import days_ago
 from airflow.operators.python_operator import PythonOperator
 
 
-# Wrapper
-def notebook_wrapper_function():
+# Wrapper function
+def first_notebook_wrapper_function():
     # !/usr/bin/env python
     # coding: utf-8
 
@@ -25,20 +25,22 @@ def notebook_wrapper_function():
     # In[3]:
     return 'Whatever you return gets printed in the logs'
 
-# DAG
+# Arguments
 args = {
     'owner': 'Airflow',
     'depends_on_past': False,
     'start_date': days_ago(1),
 }
 
+# Dag
 dag = DAG(
-    dag_id='example_001',
+    dag_id='example_1',
     default_args=args,
 )
 
-task = PythonOperator(
-    task_id='task',
-    python_callable=notebook_wrapper_function,
+# Task
+first_notebook = PythonOperator(
+    task_id='first_notebook_task',
+    python_callable=first_notebook_wrapper_function,
     dag=dag,
 )

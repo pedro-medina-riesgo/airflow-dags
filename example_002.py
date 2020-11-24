@@ -3,85 +3,98 @@ from airflow.utils.dates import days_ago
 from airflow.operators.python_operator import PythonOperator
 
 
-# Wrapper
-def jupyter_wrapper_function_1():
+# Wrapper functions
+def notebook_1_wrapper_function():
     # !/usr/bin/env python
     # coding: utf-8
 
     # In[1]:
-
     import numpy as np
     import pandas as pd
     from time import sleep
 
     # # Make a pandas DataFrame
 
-    # In[4]:
-
+    # In[2]:
     df = pd.DataFrame({'Alphabet': ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'],
                        'A': [4, 3, 5, 2, 1, 7, 7, 5, 9],
                        'B': [0, 4, 3, 6, 7, 10, 11, 9, 13],
                        'C': [1, 2, 3, 1, 2, 3, 1, 2, 3]})
+    df.head()
 
-    print(df)
-
-    print('waiting on 40')
-    sleep(40)
-    print('waiting off 40')
-
-    print(df)
-
-    # In[ ]:
-
+    # In[3]:
     return 'Whatever you return gets printed in the logs'
 
-def jupyter_wrapper_function_2():
+def notebook_2_wrapper_function():
+    # !/usr/bin/env python
+    # coding: utf-8
 
+    # In[1]:
     import numpy as np
     import pandas as pd
     from time import sleep
 
+    # # Make a pandas DataFrame
+
+    # In[2]:
     df = pd.DataFrame({'Alphabet': ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'],
                        'A': [4, 3, 5, 2, 1, 7, 7, 5, 9],
                        'B': [0, 4, 3, 6, 7, 10, 11, 9, 13],
                        'C': [1, 2, 3, 1, 2, 3, 1, 2, 3]})
+    df.tail()
 
-    print(df)
-
-    print('waiting on 20')
-    sleep(20)
-    print('waiting off 20')
-
-    print(df)
-
-    # In[ ]:
-
+    # In[3]:
     return 'Whatever you return gets printed in the logs'
 
-# DAG
+def notebook_3_wrapper_function():
+    # !/usr/bin/env python
+    # coding: utf-8
+
+    # In[1]:
+    import numpy as np
+    import pandas as pd
+    from time import sleep
+
+    # # Make a pandas DataFrame
+
+    # In[2]:
+    df = pd.DataFrame({'Alphabet': ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'],
+                       'A': [4, 3, 5, 2, 1, 7, 7, 5, 9],
+                       'B': [0, 4, 3, 6, 7, 10, 11, 9, 13],
+                       'C': [1, 2, 3, 1, 2, 3, 1, 2, 3]})
+    df.describe()
+
+    # In[3]:
+    return 'Whatever you return gets printed in the logs'
+
+# Arguments
 args = {
-    'owner': 'Magician',
+    'owner': 'Airflow',
     'depends_on_past': False,
-    'start_date': days_ago(2),
+    'start_date': days_ago(1),
 }
 
+# Dag
 dag = DAG(
-    dag_id='example_002',
+    dag_id='example_2',
     default_args=args,
-    schedule_interval=None,
-    tags=['example']
 )
 
-step1 = PythonOperator(
-    task_id='step1',
-    python_callable=jupyter_wrapper_function_1,
+# Tasks
+notebook_1 = PythonOperator(
+    task_id='notebook_1_task',
+    python_callable=notebook_1_wrapper_function,
     dag=dag,
 )
 
-step2 = PythonOperator(
-    task_id='step2',
-    python_callable=jupyter_wrapper_function_2,
+notebook_2 = PythonOperator(
+    task_id='notebook_2_task',
+    python_callable=notebook_2_wrapper_function,
     dag=dag,
 )
 
-step1 >> step2
+notebook_3 = PythonOperator(
+    task_id='notebook_13task',
+    python_callable=notebook_3_wrapper_function,
+    dag=dag,
+)
