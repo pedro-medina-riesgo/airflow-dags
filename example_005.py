@@ -3,6 +3,8 @@ from airflow.utils.dates import days_ago
 from airflow.operators.python_operator import PythonOperator
 
 import os
+import numpy as np 
+import pandas as pd
 
 
 # Wrapper function
