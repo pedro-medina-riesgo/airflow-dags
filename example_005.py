@@ -14,6 +14,9 @@ def testing_wrapper_function():
     x = [obj for obj in os.listdir('dags/data/example_005')]
     print(x)
 
+    print('--------------------------------------------------')
+    df = pd.read_csv('dags/data/example_005/capacity.csv')
+    print(df)
 
 # Arguments
 args = {
