@@ -10,10 +10,10 @@ def testing_wrapper_function():
     path = os.getcwd() 
     print(path)
 
-    x = [obj for obj in os.listdir()]
+    x = [obj for obj in os.listdir('dags')]
     print(x)
 
-    y = [obj for obj in os.listdir(path)]
+    y = [obj for obj in os.listdir(path + '/dags')]
     print(y)
 
 # Arguments
