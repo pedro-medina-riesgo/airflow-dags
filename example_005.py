@@ -9,12 +9,11 @@ import os
 def testing_wrapper_function():
     path = os.getcwd() 
     print(path)
+    print('--------------------------------------------------')
 
-    x = [obj for obj in os.listdir('dags')]
+    x = [obj for obj in os.listdir('dags/data/example_005')]
     print(x)
 
-    y = [obj for obj in os.listdir(path + '/dags')]
-    print(y)
 
 # Arguments
 args = {
