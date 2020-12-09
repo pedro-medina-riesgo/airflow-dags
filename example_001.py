@@ -1,6 +1,3 @@
-import os
-import sys
-import delorean
 from airflow.models import DAG
 from airflow.utils.dates import days_ago
 from airflow.operators.python_operator import PythonOperator
@@ -23,8 +20,6 @@ def first_notebook_wrapper_function():
                        'B': [0, 4, 3, 6, 7, 10, 11, 9, 13],
                        'C': [1, 2, 3, 1, 2, 3, 1, 2, 3]})
     print(df)
-    print(sys.path)
-    print(os.environ)
 
     # In[3]:
     return 'Whatever you return gets printed in the logs'
