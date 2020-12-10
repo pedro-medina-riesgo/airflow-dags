@@ -21,6 +21,9 @@ def first_notebook_wrapper_function():
                        'C': [1, 2, 3, 1, 2, 3, 1, 2, 3]})
     print(df)
 
+    from pplaa import Project
+    prj = Project()
+
     # In[3]:
     return 'Whatever you return gets printed in the logs'
 
