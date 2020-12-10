@@ -25,7 +25,7 @@ def first_notebook_wrapper_function():
     from pplaa import Project
     print('prj = Project()')
     prj = Project()
-    print('prj.init('.')')
+    print('prj.init(\'.\')')
     prj.init('.')
     print('prj.files()')
     prj.files()
