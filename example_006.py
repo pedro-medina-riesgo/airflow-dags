@@ -4,7 +4,7 @@ from airflow.operators.python_operator import PythonOperator
 
 
 # Wrapper function
-def my_function():
+def my_function(my_param):
     import numpy as np
     import pandas as pd
 
@@ -12,7 +12,9 @@ def my_function():
     from airflow.models import Variable
 
     catalogs_folder = Variable.get("CATALOGS_FOLDER")
-    print(catalogs_folder)
+    
+    print('Valor del parametri: ' + my_param)
+    print('Valor de la variable: ' + catalogs_folder)
     
 
 # Arguments
@@ -26,12 +28,14 @@ args = {
 dag = DAG(
     dag_id='example_006',
     default_args=args,
+    description='A simple DAG',
 )
 
 # Task
 my_task = PythonOperator(
     task_id='my_task',
     python_callable=my_function,
+    op_kwargs={'my_param': 'Set a custom param'},
     dag=dag,
 )
 
