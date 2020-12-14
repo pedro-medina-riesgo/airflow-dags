@@ -13,11 +13,11 @@ def testing_wrapper_function():
     print(path)
     print('--------------------------------------------------')
 
-    x = [obj for obj in os.listdir('dags/data/example_005')]
+    x = [obj for obj in os.listdir('dags/data')]
     print(x)
 
     print('--------------------------------------------------')
-    df = pd.read_csv('dags/data/example_005/capacity.csv')
+    df = pd.read_csv('dags/data/capacity.csv')
     print(df)
 
 # Arguments

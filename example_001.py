@@ -20,11 +20,6 @@ def first_notebook_wrapper_function():
                        'B': [0, 4, 3, 6, 7, 10, 11, 9, 13],
                        'C': [1, 2, 3, 1, 2, 3, 1, 2, 3]})
     print(df)
-
-    print('from pplaa import Project')
-    from pplaa import Project
-    print('prj = Project()')
-    prj = Project()
     
     # In[3]:
     return 'Whatever you return gets printed in the logs'
