@@ -12,8 +12,8 @@ def my_function(my_param):
     from airflow.models import Variable
 
     catalogs_folder = Variable.get("CATALOGS_FOLDER")
-    
-    print('Valor del parametri: ' + my_param)
+
+    print('Valor del parametro: ' + my_param)
     print('Valor de la variable: ' + catalogs_folder)
     
 
