@@ -18,7 +18,7 @@ def first_notebook_wrapper_function():
     df = pd.DataFrame({'Alphabet': ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'],
                        'A': [4, 3, 5, 2, 1, 7, 7, 5, 9],
                        'B': [0, 4, 3, 6, 7, 10, 11, 9, 13],
-                       'C': [1, 2, 3, 1, 2, 3, 1, 2, 3]})
+                       'C': [1, 2, 3, 1, 2, 3, 1, 2, 33]})
     print(df)
     
     # In[3]:
