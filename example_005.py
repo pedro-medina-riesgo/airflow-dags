@@ -16,7 +16,7 @@ def testing_wrapper_function():
     x = [obj for obj in os.listdir('/opt/airflow')]
     print(x)
 
-    x = [obj for obj in os.listdir('/opt/airflow/efs')]
+    x = [obj for obj in os.listdir('/opt/airflow/catalogs')]
     print(x)
 
     print('--------------------------------------------------')
