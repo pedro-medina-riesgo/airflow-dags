@@ -15,6 +15,11 @@ def my_function(my_param):
 
     print('Valor del parametro: ' + my_param)
     print('Valor de la variable: ' + catalogs_folder)
+
+    prj = Project()
+    prj.init(catalogs_folder + '/example_006')
+
+    print('por aqui paso')
     
 
 # Arguments
@@ -38,5 +43,3 @@ my_task = PythonOperator(
     op_kwargs={'my_param': 'Set a custom param'},
     dag=dag,
 )
-
-# prj = Project()
