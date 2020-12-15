@@ -13,6 +13,9 @@ def testing_wrapper_function():
     print(path)
     print('--------------------------------------------------')
 
+    x = [obj for obj in os.listdir('/opt/airflow')]
+    print(x)
+
     x = [obj for obj in os.listdir('/opt/airflow/efs')]
     print(x)
 
