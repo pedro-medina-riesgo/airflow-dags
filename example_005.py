@@ -13,7 +13,7 @@ def testing_wrapper_function():
     print(path)
     print('--------------------------------------------------')
 
-    x = [obj for obj in os.listdir('dags/data')]
+    x = [obj for obj in os.listdir('/opt/airflow/efs')]
     print(x)
 
     print('--------------------------------------------------')
