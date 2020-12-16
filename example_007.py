@@ -31,7 +31,7 @@ def my_function_007():
 
     prj.cat.intermediate.locations.load()
 
-    prj.cat.profile(dsid='intermediate.locations')
+    # prj.cat.profile(dsid='intermediate.locations')
 
     prj.cat.info
 
