@@ -67,8 +67,6 @@ def my_function():
     # MIN_MAX_RULE -> Fail
     vars(prj.cat.validate('raw.pokemon').validation_result.results[1]['result'])
 
-    print('Padrino, llegue !!!')
-
 # Arguments
 args = {
     'owner': 'Airflow',

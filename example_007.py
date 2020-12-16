@@ -2,23 +2,23 @@ from airflow.models import DAG
 from airflow.utils.dates import days_ago
 from airflow.operators.python_operator import PythonOperator
 
+# Project
+from airflow.models import Variable
+catalogs_folder = Variable.get("CATALOGS_FOLDER")
+
+from pplaa import Project
+prj = Project()
+prj.init(catalogs_folder + '/example_007')
+
+# Notebook code
+import numpy as np
+import pandas as pd
+
+import warnings
+warnings.filterwarnings("ignore")
 
 # Wrapper function
-def my_function_007():
-    from airflow.models import Variable
-    catalogs_folder = Variable.get("CATALOGS_FOLDER")
-    
-    import numpy as np
-    import pandas as pd
-
-    import warnings
-    warnings.filterwarnings("ignore")
-
-    from pplaa import Project
-    
-    prj = Project()
-    prj.init(catalogs_folder + '/example_007')
-
+def my_function_007(prj):
     prj.cat.info
 
     df = prj.cat.raw.locations.load()
@@ -65,8 +65,6 @@ def my_function_007():
     result = prj.cat.validate('intermediate.locations')
     assert result.passed, str(result)
 
-    print('Padrino, llegue !!!')
-
 # Arguments
 args = {
     'owner': 'Airflow',
@@ -85,5 +83,6 @@ dag = DAG(
 my_task_007 = PythonOperator(
     task_id='my_task_007',
     python_callable=my_function_007,
+    op_kwargs={'prj': prj},
     dag=dag,
 )
