@@ -19,8 +19,6 @@ def my_function_007():
     prj = Project()
     prj.init(catalogs_folder + '/example_007')
 
-    prj.files()
-
     prj.cat.info
 
     df = prj.cat.raw.locations.load()
