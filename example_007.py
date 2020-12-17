@@ -14,9 +14,6 @@ prj.init(catalogs_folder + '/example_007')
 
 # Wrapper function
 def my_function_007(prj):
-    import numpy as np
-    import pandas as pd
-
     import warnings
     warnings.filterwarnings("ignore")
 
