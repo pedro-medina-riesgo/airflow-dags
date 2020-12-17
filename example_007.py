@@ -2,7 +2,8 @@ from airflow.models import DAG
 from airflow.utils.dates import days_ago
 from airflow.operators.python_operator import PythonOperator
 
-# Project
+
+# Catalog
 from airflow.models import Variable
 catalogs_folder = Variable.get("CATALOGS_FOLDER")
 
@@ -10,15 +11,15 @@ from pplaa import Project
 prj = Project()
 prj.init(catalogs_folder + '/example_007')
 
-# Notebook code
-import numpy as np
-import pandas as pd
-
-import warnings
-warnings.filterwarnings("ignore")
 
 # Wrapper function
 def my_function_007(prj):
+    import numpy as np
+    import pandas as pd
+
+    import warnings
+    warnings.filterwarnings("ignore")
+
     prj.cat.info
 
     df = prj.cat.raw.locations.load()
