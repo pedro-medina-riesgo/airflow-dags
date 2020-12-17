@@ -46,8 +46,8 @@ def first_validation_wrapper_function(prj):
                     'rtype': 'MIN_MAX_RULE',
                     'mandatory': 1,
                     'column': 'XCOORDINATE',
-                    'min_value': 58,
-                    'max_value': 58
+                    'min_value': 0,
+                    'max_value': 500
                 }
             ]
         }
@@ -78,8 +78,8 @@ def second_validation_wrapper_function(prj):
                     'rtype': 'MIN_MAX_RULE',
                     'mandatory': 1,
                     'column': 'XCOORDINATE',
-                    'min_value': 0,
-                    'max_value': 500
+                    'min_value': 58,
+                    'max_value': 58
                 }
             ]
         }
