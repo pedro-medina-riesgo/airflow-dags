@@ -7,6 +7,9 @@ import numpy as np
 import pandas as pd
 
 
+x = 50
+y = [1, 2, 3]
+
 # Wrapper function
 def testing_wrapper_function(my_param):
     print('Valor del parametro: ' + my_param)
@@ -24,6 +27,15 @@ def testing_wrapper_function(my_param):
     print(x)
     print('--------------------------------------------------')
 
+    print(x)
+    print(y)
+
+    x += 50
+    y.append(4)
+
+def test_function():
+    print(x)
+    print(y)
 
 # Arguments
 args = {
@@ -46,3 +58,11 @@ testing = PythonOperator(
     op_kwargs={'my_param': 'Set a custom param'},
     dag=dag,
 )
+
+test = PythonOperator(
+    task_id='test',
+    python_callable=test_function,
+    dag=dag,
+)
+
+testing >> test
