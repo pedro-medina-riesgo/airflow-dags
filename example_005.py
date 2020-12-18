@@ -19,12 +19,12 @@ def testing_wrapper_function(my_param):
     print(path)
     print('--------------------------------------------------')
 
-    x = [obj for obj in os.listdir('/opt/airflow')]
-    print(x)
+    t = [obj for obj in os.listdir('/opt/airflow')]
+    print(t)
     print('--------------------------------------------------')
 
-    x = [obj for obj in os.listdir('/opt/airflow/catalogs')]
-    print(x)
+    t = [obj for obj in os.listdir('/opt/airflow/catalogs')]
+    print(t)
     print('--------------------------------------------------')
 
     print(x)
