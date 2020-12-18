@@ -6,12 +6,11 @@ import os
 import numpy as np 
 import pandas as pd
 
-
-global x = 50
-global y = [1, 2, 3]
+x = 50
+y = [1, 2, 3]
 
 # Wrapper function
-def testing_wrapper_function(my_param):
+def testing_wrapper_function(my_param, x, y):
     print('Valor del parametro: ' + my_param)
     print('--------------------------------------------------')
 
@@ -33,7 +32,7 @@ def testing_wrapper_function(my_param):
     x += 50
     y.append(4)
 
-def test_function():
+def test_function(x, y):
     print(x)
     print(y)
 
@@ -55,13 +54,14 @@ dag = DAG(
 testing = PythonOperator(
     task_id='testing_task',
     python_callable=testing_wrapper_function,
-    op_kwargs={'my_param': 'Set a custom param'},
+    op_kwargs={'my_param': 'Set a custom param', 'x': x, 'y': y},
     dag=dag,
 )
 
 test = PythonOperator(
     task_id='test',
     python_callable=test_function,
+    op_kwargs={'x': x, 'y': y},
     dag=dag,
 )
 
