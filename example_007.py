@@ -111,14 +111,14 @@ dag = DAG(
 preparation = PythonOperator(
     task_id='preparation',
     python_callable=preparation_wrapper_function,
-    op_kwargs={'prj': prj},
+    #op_kwargs={'prj': prj},
     dag=dag,
 )
 
 first_validation = PythonOperator(
     task_id='first_validation',
     python_callable=first_validation_wrapper_function,
-    op_kwargs={'prj': prj},
+    #op_kwargs={'prj': prj},
     dag=dag,
 )
 
