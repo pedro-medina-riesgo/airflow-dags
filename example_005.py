@@ -11,25 +11,26 @@ y = [1, 2, 3]
 # Wrapper function
 def testing_wrapper_function(**kwargs):
     print(kwargs)
+    print(kwargs['dag'])
+    print(kwargs['dag'].params)
 
-    print(kwargs['dag'].x)
-    print(kwargs['dag'].y)
+    print(kwargs['dag'].params['x'])
+    print(kwargs['dag'].params['y'])
 
-    kwargs['dag'].x += 50
-    kwargs['dag'].y.append(4)
+    kwargs['dag'].params['x'] += 50
+    kwargs['dag'].params['y'].append(4)
 
 def test_function(**kwargs):
 
-    print(kwargs['dag'].x)
-    print(kwargs['dag'].y)
+    print(kwargs['dag'].params['x'])
+    print(kwargs['dag'].params['y'])
 
 # Arguments
 args = {
     'owner': 'Airflow',
     'depends_on_past': False,
     'start_date': days_ago(1),
-    'x': x,
-    'y': y,
+    'params': {'x': x, 'y': y}
 }
 
 # Dag
