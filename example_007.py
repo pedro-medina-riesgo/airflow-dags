@@ -21,13 +21,15 @@ warnings.filterwarnings("ignore")
 
 
 # Wrapper functions 
-def preparation_wrapper_function(prj):
+def preparation_wrapper_function():
+#def preparation_wrapper_function(prj):
     df = prj.cat.raw.locations.load()
     df = df.head(500)
     prj.cat.save(data=df, dsid='intermediate.locations')
 
 
-def first_validation_wrapper_function(prj):
+def first_validation_wrapper_function():
+#def first_validation_wrapper_function(prj):
     prj.cat.intermediate.locations.load()
 
     validation_rules = {
@@ -59,7 +61,8 @@ def first_validation_wrapper_function(prj):
     assert result.passed, str(result)
 
 
-def second_validation_wrapper_function(prj):
+def second_validation_wrapper_function():
+#def second_validation_wrapper_function(prj):
     prj.cat.intermediate.locations.load()
 
     validation_rules = {
@@ -122,7 +125,7 @@ first_validation = PythonOperator(
 second_validation = PythonOperator(
     task_id='second_validation',
     python_callable=second_validation_wrapper_function,
-    op_kwargs={'prj': prj},
+    #op_kwargs={'prj': prj},
     dag=dag,
 )
 
