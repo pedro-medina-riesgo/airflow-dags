@@ -20,6 +20,9 @@ def testing_wrapper_function(**kwargs):
     kwargs['dag'].params['x'] += 50
     kwargs['dag'].params['y'].append(4)
 
+    print(kwargs['dag'].params['x'])
+    print(kwargs['dag'].params['y'])
+
 def test_function(**kwargs):
 
     print(kwargs['dag'].params['x'])
