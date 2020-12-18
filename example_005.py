@@ -10,7 +10,7 @@ x = 50
 y = [1, 2, 3]
 
 # Wrapper function
-def testing_wrapper_function(my_param, x, y):
+def testing_wrapper_function(my_param):
     print('Valor del parametro: ' + my_param)
     print('--------------------------------------------------')
 
@@ -26,13 +26,19 @@ def testing_wrapper_function(my_param, x, y):
     print(t)
     print('--------------------------------------------------')
 
+    global x
+    global y
+
     print(x)
     print(y)
 
     x += 50
     y.append(4)
 
-def test_function(x, y):
+def test_function():
+    global x
+    global y
+
     print(x)
     print(y)
 
@@ -54,14 +60,13 @@ dag = DAG(
 testing = PythonOperator(
     task_id='testing_task',
     python_callable=testing_wrapper_function,
-    op_kwargs={'my_param': 'Set a custom param', 'x': x, 'y': y},
+    op_kwargs={'my_param': 'Set a custom param'},
     dag=dag,
 )
 
 test = PythonOperator(
     task_id='test',
     python_callable=test_function,
-    op_kwargs={'x': x, 'y': y},
     dag=dag,
 )
 
