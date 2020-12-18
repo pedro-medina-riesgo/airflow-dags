@@ -28,6 +28,8 @@ args = {
     'owner': 'Airflow',
     'depends_on_past': False,
     'start_date': days_ago(1),
+    x = x,
+    y = y,
 }
 
 # Dag
