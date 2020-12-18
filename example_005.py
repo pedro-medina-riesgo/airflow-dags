@@ -2,7 +2,6 @@ from airflow.models import DAG
 from airflow.utils.dates import days_ago
 from airflow.operators.python_operator import PythonOperator
 
-import os
 import numpy as np 
 import pandas as pd
 
@@ -10,37 +9,19 @@ x = 50
 y = [1, 2, 3]
 
 # Wrapper function
-def testing_wrapper_function(my_param):
-    print('Valor del parametro: ' + my_param)
-    print('--------------------------------------------------')
+def testing_wrapper_function(**kwargs):
+    print(kwargs)
 
-    path = os.getcwd() 
-    print(path)
-    print('--------------------------------------------------')
+    print(kwargs['dag'].x)
+    print(kwargs['dag'].y)
 
-    t = [obj for obj in os.listdir('/opt/airflow')]
-    print(t)
-    print('--------------------------------------------------')
+    kwargs['dag'].x += 50
+    kwargs['dag'].y.append(4)
 
-    t = [obj for obj in os.listdir('/opt/airflow/catalogs')]
-    print(t)
-    print('--------------------------------------------------')
+def test_function(**kwargs):
 
-    global x
-    global y
-
-    print(x)
-    print(y)
-
-    x += 50
-    y.append(4)
-
-def test_function():
-    global x
-    global y
-
-    print(x)
-    print(y)
+    print(kwargs['dag'].x)
+    print(kwargs['dag'].y)
 
 # Arguments
 args = {
@@ -60,13 +41,14 @@ dag = DAG(
 testing = PythonOperator(
     task_id='testing_task',
     python_callable=testing_wrapper_function,
-    op_kwargs={'my_param': 'Set a custom param'},
+    provide_context=True,
     dag=dag,
 )
 
 test = PythonOperator(
     task_id='test',
     python_callable=test_function,
+    provide_context=True,
     dag=dag,
 )
 
