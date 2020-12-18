@@ -7,8 +7,8 @@ import numpy as np
 import pandas as pd
 
 
-x = 50
-y = [1, 2, 3]
+global x = 50
+global y = [1, 2, 3]
 
 # Wrapper function
 def testing_wrapper_function(my_param):
