@@ -2,38 +2,47 @@ from airflow.models import DAG
 from airflow.utils.dates import days_ago
 from airflow.operators.python_operator import PythonOperator
 
-import numpy as np 
-import pandas as pd
 
-x = 50
-y = [1, 2, 3]
+from datetime import datetime
+print(datetime.now())
+
+a = [1, 2, 3]   # Por omision global
+b = [1, 2, 3]   # Explicitamente global
+c = [1, 2, 3]   # Parametro
+d = [1, 2, 3]   # Contexto
 
 # Wrapper function
-def testing_wrapper_function(**kwargs):
-    print(kwargs)
-    print(kwargs['dag'])
-    print(kwargs['dag'].params)
+def test_1(c, **kwargs):
+    global b
 
-    print(kwargs['dag'].params['x'])
-    print(kwargs['dag'].params['y'])
+    print(a)
+    print(b)
+    print(c)
+    print(kwargs['dag'].params['d'])
 
-    kwargs['dag'].params['x'] += 50
-    kwargs['dag'].params['y'].append(4)
+    a.append(4)
+    b.append(4)
+    c.append(4)
+    kwargs['dag'].params['d'].append(4)
 
-    print(kwargs['dag'].params['x'])
-    print(kwargs['dag'].params['y'])
+    print(a)
+    print(b)
+    print(c)
+    print(kwargs['dag'].params['d'])
 
-def test_function(**kwargs):
+def test_2(c, **kwargs):
 
-    print(kwargs['dag'].params['x'])
-    print(kwargs['dag'].params['y'])
+    print(a)
+    print(b)
+    print(c)
+    print(kwargs['dag'].params['d'])
 
 # Arguments
 args = {
     'owner': 'Airflow',
     'depends_on_past': False,
     'start_date': days_ago(1),
-    'params': {'x': x, 'y': y}
+    'params': {'d': d}
 }
 
 # Dag
@@ -44,18 +53,20 @@ dag = DAG(
 )
 
 # Task
-testing = PythonOperator(
-    task_id='testing_task',
-    python_callable=testing_wrapper_function,
+task_1 = PythonOperator(
+    task_id='task_1',
+    python_callable=test_1,
+    op_kwargs={'c': c},
     provide_context=True,
     dag=dag,
 )
 
-test = PythonOperator(
-    task_id='test',
-    python_callable=test_function,
+task_2 = PythonOperator(
+    task_id='task_2',
+    python_callable=test_2,
+    op_kwargs={'c': c},
     provide_context=True,
     dag=dag,
 )
 
-testing >> test
+task_1 >> task_2
