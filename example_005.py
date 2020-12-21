@@ -30,12 +30,22 @@ def test_1(c, **kwargs):
     print(c)
     print(kwargs['dag'].params['d'])
 
+    print(id(a))
+    print(id(b))
+    print(id(c))
+    print(id(kwargs['dag'].params['d']))
+
 def test_2(c, **kwargs):
 
     print(a)
     print(b)
     print(c)
     print(kwargs['dag'].params['d'])
+
+    print(id(a))
+    print(id(b))
+    print(id(c))
+    print(id(kwargs['dag'].params['d']))
 
 # Arguments
 args = {
