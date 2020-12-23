@@ -6,7 +6,7 @@ from airflow.operators.python_operator import PythonOperator
 from datetime import datetime
 print(datetime.now())
 
-a = [1, 2, 3]   # Por omision global
+a = [1, 2, 3]   # Por omision, global
 b = [1, 2, 3]   # Explicitamente global
 c = [1, 2, 3]   # Parametro
 d = [1, 2, 3]   # Contexto
