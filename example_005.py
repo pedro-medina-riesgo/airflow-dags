@@ -63,20 +63,20 @@ dag = DAG(
 )
 
 # Task
-task_1 = PythonOperator(
-    task_id='task_1',
+t_005_1 = PythonOperator(
+    task_id='t_005_1',
     python_callable=test_1,
     op_kwargs={'c': c},
     provide_context=True,
     dag=dag,
 )
 
-task_2 = PythonOperator(
-    task_id='task_2',
+t_005_2 = PythonOperator(
+    task_id='t_005_2',
     python_callable=test_2,
     op_kwargs={'c': c},
     provide_context=True,
     dag=dag,
 )
 
-task_1 >> task_2
+t_005_1 >> t_005_2

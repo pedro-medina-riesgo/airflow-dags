@@ -82,8 +82,8 @@ dag = DAG(
 )
 
 # Task
-my_task = PythonOperator(
-    task_id='my_task',
+t_006_1 = PythonOperator(
+    task_id='t_006_1',
     python_callable=my_function,
     dag=dag,
 )

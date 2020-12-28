@@ -80,20 +80,20 @@ dag = DAG(
 )
 
 # Tasks
-notebook_1 = PythonOperator(
-    task_id='notebook_1_task',
+t_002_1 = PythonOperator(
+    task_id='t_002_1',
     python_callable=notebook_1_wrapper_function,
     dag=dag,
 )
 
-notebook_2 = PythonOperator(
-    task_id='notebook_2_task',
+t_002_2 = PythonOperator(
+    task_id='t_002_2',
     python_callable=notebook_2_wrapper_function,
     dag=dag,
 )
 
-notebook_3 = PythonOperator(
-    task_id='notebook_3_task',
+t_002_3 = PythonOperator(
+    task_id='t_002_3',
     python_callable=notebook_3_wrapper_function,
     dag=dag,
 )

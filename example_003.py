@@ -34,14 +34,14 @@ dag = DAG(
 )
 
 # Tasks
-my_task_1 = PythonOperator(
-    task_id='my_task_1',
+t_003_1 = PythonOperator(
+    task_id='t_003_1',
     python_callable=my_task_1_wrapper_function,
     dag=dag,
 )
 
-my_task_2 = PythonOperator(
-    task_id='my_task_2',
+t_003_2 = PythonOperator(
+    task_id='t_003_2',
     python_callable=my_task_2_wrapper_function,
     dag=dag,
 )

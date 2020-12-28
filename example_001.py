@@ -38,8 +38,8 @@ dag = DAG(
 )
 
 # Task
-first_notebook = PythonOperator(
-    task_id='first_notebook_task',
+t_001_1 = PythonOperator(
+    task_id='t_001_1',
     python_callable=first_notebook_wrapper_function,
     dag=dag,
 )

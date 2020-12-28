@@ -37,14 +37,14 @@ dag = DAG(
 )
 
 # Tasks
-my_task_1 = PythonOperator(
-    task_id='my_task_1',
+t_004_1 = PythonOperator(
+    task_id='t_004_1',
     python_callable=my_function_1,
     dag=dag,
 )
 
-my_task_2 = PythonOperator(
-    task_id='my_task_2',
+t_004_2 = PythonOperator(
+    task_id='t_004_2',
     python_callable=my_function_2,
     dag=dag,
 )

@@ -108,26 +108,26 @@ dag = DAG(
 ) 
 
 # Tasks 
-preparation = PythonOperator(
-    task_id='preparation',
+t_007_1 = PythonOperator(
+    task_id='t_007_1',
     python_callable=preparation_wrapper_function,
     #op_kwargs={'prj': prj},
     dag=dag,
 )
 
-first_validation = PythonOperator(
-    task_id='first_validation',
+t_007_2 = PythonOperator(
+    task_id='t_007_2',
     python_callable=first_validation_wrapper_function,
     #op_kwargs={'prj': prj},
     dag=dag,
 )
 
-second_validation = PythonOperator(
-    task_id='second_validation',
+t_007_3 = PythonOperator(
+    task_id='t_007_3',
     python_callable=second_validation_wrapper_function,
     #op_kwargs={'prj': prj},
     dag=dag,
 )
 
 # Pipelines 
-preparation >> first_validation >> second_validation
+t_007_1 >> t_007_2 >> t_007_3
