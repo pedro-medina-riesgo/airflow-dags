@@ -9,7 +9,7 @@ print(datetime.now())
 from airflow.models import Variable
 catalogs_folder = Variable.get("CATALOGS_FOLDER")
 
-filename = catalogs_folder + '/' + str(datetime.now())
+filename = catalogs_folder + '/test/' + str(datetime.now())
 with open(filename, 'w') as f:
     f.write('Me ejecuto...')
 
