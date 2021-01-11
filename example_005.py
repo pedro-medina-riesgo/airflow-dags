@@ -6,6 +6,13 @@ from airflow.operators.python_operator import PythonOperator
 from datetime import datetime
 print(datetime.now())
 
+from airflow.models import Variable
+catalogs_folder = Variable.get("CATALOGS_FOLDER")
+
+filename = catalogs_folder + '/' + str(datetime.now())
+with open(filename, 'w') as f:
+    f.write('Me ejecuto...')
+
 a = [1, 2, 3]   # Por omision, global
 b = [1, 2, 3]   # Explicitamente global
 c = [1, 2, 3]   # Parametro
