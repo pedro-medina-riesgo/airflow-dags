@@ -1,36 +1,40 @@
-from kubernetes.client import models as k8s
+# from kubernetes.client import models as k8s
+# 
+# from airflow import DAG
+# from airflow.utils.dates import days_ago
+# from airflow.kubernetes.secret import Secret
+# from airflow.operators.bash_operator import BashOperator
+# from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOperator
+# 
+# namespace = 'pso-dev-e92439b19961-afl1'
+# 
+# default_args = {
+#     'owner': 'Peter',
+#     'depends_on_past': False,
+#     'start_date': days_ago(2),
+# }
+# 
+# dag = DAG(
+#     dag_id='example_kubernetes_1',
+#     default_args=default_args,
+# ) 
+# 
+# k = KubernetesPodOperator(
+#     namespace=namespace,
+#     image="ubuntu:16.04",
+#     cmds=["bash", "-cx"],
+#     arguments=["echo", "10"],
+#     name="k-name",
+#     task_id="k-task",
+#     is_delete_operator_pod=True,
+#     in_cluster=True,
+#     get_logs=True,
+#     dag=dag
+# )
 
-from airflow import DAG
-from airflow.utils.dates import days_ago
-from airflow.kubernetes.secret import Secret
-from airflow.operators.bash_operator import BashOperator
-from airflow.contrib.operators.kubernetes_pod_operator import KubernetesPodOperator
 
-namespace = 'pso-dev-e92439b19961-afl1'
 
-default_args = {
-    'owner': 'Peter',
-    'depends_on_past': False,
-    'start_date': days_ago(2),
-}
 
-dag = DAG(
-    dag_id='example_kubernetes_1',
-    default_args=default_args,
-) 
-
-k = KubernetesPodOperator(
-    namespace=namespace,
-    image="ubuntu:16.04",
-    cmds=["bash", "-cx"],
-    arguments=["echo", "10"],
-    name="k-name",
-    task_id="k-task",
-    is_delete_operator_pod=True,
-    in_cluster=True,
-    get_logs=True,
-    dag=dag
-)
 
     ##resources={'request_memory': '3Gi',
     ##            'request_cpu': '200m',

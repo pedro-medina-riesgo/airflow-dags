@@ -22,14 +22,16 @@ warnings.filterwarnings("ignore")
 
 # Wrapper functions 
 def preparation_wrapper_function():
-#def preparation_wrapper_function(prj):
+    import pplaa
+    pplaa.__version__
+    print(pplaa.__version__)
+
     df = prj.cat.raw.locations.load()
     df = df.head(500)
     prj.cat.save(data=df, dsid='intermediate.locations')
 
 
 def first_validation_wrapper_function():
-#def first_validation_wrapper_function(prj):
     prj.cat.intermediate.locations.load()
 
     validation_rules = {
@@ -62,7 +64,6 @@ def first_validation_wrapper_function():
 
 
 def second_validation_wrapper_function():
-#def second_validation_wrapper_function(prj):
     prj.cat.intermediate.locations.load()
 
     validation_rules = {
@@ -111,21 +112,18 @@ dag = DAG(
 t_007_1 = PythonOperator(
     task_id='t_007_1',
     python_callable=preparation_wrapper_function,
-    #op_kwargs={'prj': prj},
     dag=dag,
 )
 
 t_007_2 = PythonOperator(
     task_id='t_007_2',
     python_callable=first_validation_wrapper_function,
-    #op_kwargs={'prj': prj},
     dag=dag,
 )
 
 t_007_3 = PythonOperator(
     task_id='t_007_3',
     python_callable=second_validation_wrapper_function,
-    #op_kwargs={'prj': prj},
     dag=dag,
 )
 
