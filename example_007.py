@@ -22,10 +22,6 @@ warnings.filterwarnings("ignore")
 
 # Wrapper functions 
 def preparation_wrapper_function():
-    import pplaa
-    pplaa.__version__
-    print(pplaa.__version__)
-
     df = prj.cat.raw.locations.load()
     df = df.head(500)
     prj.cat.save(data=df, dsid='intermediate.locations')
